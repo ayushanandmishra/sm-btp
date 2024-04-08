@@ -1,0 +1,11 @@
+POST http://localhost:3500/staff HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "email": "admin@gmail.com",
+  "department": "Computer",
+  "username": "admin",
+  "password": "admin",
+  "role": "HOD"
+}
