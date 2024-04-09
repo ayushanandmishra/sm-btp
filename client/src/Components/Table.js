@@ -27,7 +27,7 @@ const RowWithCheckbox = ({ keys, disabled, value, handleFormChange }) => {
       className={
         value.present
           ? "border-t-[1px] border-slate-400 bg-violet-900/50 first:border-none"
-          : "border-t-[1px] border-slate-400"
+          : "border-t-[1px] border-slate-400 "
       }
     >
       <td className="p-2 text-center">
@@ -44,6 +44,9 @@ const RowWithCheckbox = ({ keys, disabled, value, handleFormChange }) => {
       </td>
       <td className=" px-4 py-2 text-center text-lg font-medium">
         {value.student?.name || value?.name}
+      </td>
+      <td className=" px-4 py-2 text-center text-lg font-medium">
+        {value.student?.rollno || value?.name}
       </td>
     </tr>
   );

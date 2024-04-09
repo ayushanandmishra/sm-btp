@@ -16,8 +16,10 @@ const getAttendance = async (req, res) => {
     date: req.params.date,
     hour: req.params.hour,
   })
-    .populate({ path: "attendance.student", select: "name" })
+    .populate({ path: "attendance.student", select: "name rollno" })
     .exec();
+
+    console.log(attendance?.attendance[0].student);
   if (!attendance) {
     return res.status(404).json({
       message: `No Existing Record(s) found. Add New Record.`,

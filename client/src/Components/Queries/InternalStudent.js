@@ -35,10 +35,10 @@ const InternalStudent = () => {
               AdditionalHeaderClasses={"first:text-left"}
               Headers={[
                 "Paper",
-                "Test",
-                "Seminar",
-                "Assignment",
-                "Attendance",
+                "Quiz-1",
+                "Quiz-2",
+                "Mid-Term",
+                "End-Term",
                 "Total",
               ]}
             />

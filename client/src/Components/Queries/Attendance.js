@@ -19,6 +19,7 @@ const Attendance = () => {
   // fetching Attendance
   const fetchAttendance = async (e) => {
     setAttendance([]);
+    console.log("attendnce");
     setError("");
     e.preventDefault();
     setError("");
@@ -27,6 +28,7 @@ const Attendance = () => {
       // saving the record ID for Updating/Deleting record
       setId(response.data._id);
       setAttendance(response.data.attendance);
+      console.log("stuents "+JSON.stringify(response.data.attendance));
       setDisabled(true);
     } catch (err) {
       setError(err);
@@ -38,6 +40,7 @@ const Attendance = () => {
         students.forEach((student) => {
           Object.assign(student, { present: true });
         });
+        
         setAttendance(students);
         setDisabled(false);
       }
@@ -173,7 +176,6 @@ const Attendance = () => {
               <option value="2">II</option>
               <option value="3">III</option>
               <option value="4">IV</option>
-              <option value="5">V</option>
             </select>
           </div>
           <div className="flex items-end">
@@ -193,7 +195,7 @@ const Attendance = () => {
           {attendance?.length ? (
             <div className="my-4 w-full rounded-md border-2 border-slate-900 dark:border-slate-500 dark:p-[1px] lg:w-1/2">
               <table className="w-full">
-                <TableHeader Headers={["Present", "Student"]} />
+                <TableHeader Headers={["Present", "Student","Roll No"]} />
                 <tbody>
                   {attendance?.map((student, index) => (
                     <RowWithCheckbox

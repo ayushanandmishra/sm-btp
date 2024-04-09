@@ -80,10 +80,22 @@ const StaffForm = () => {
         </option>
 
         <option
-          className="min-h-[2rem] bg-violet-500 font-semibold leading-8 text-slate-100"
+          className="min-h-[2rem] bg-violet-700 font-semibold leading-8 text-slate-100"
           value="Computer"
         >
           Computer
+        </option>
+        <option
+          className="min-h-[2rem] bg-violet-500 font-semibold leading-8 text-slate-100"
+          value="Electronics"
+        >
+          Electronics
+        </option>
+        <option
+          className="min-h-[2rem] bg-violet-700 font-semibold leading-8 text-slate-100"
+          value="Mechanical"
+        >
+          Mechanical
         </option>
       </select>
       <label className="block" htmlFor="username">

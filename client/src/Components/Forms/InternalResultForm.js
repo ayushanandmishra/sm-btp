@@ -149,10 +149,10 @@ const InternalResultForm = () => {
                   AdditionalHeaderClasses={"first:text-left"}
                   Headers={[
                     "Student",
-                    "Test",
-                    "Seminar",
-                    "Assignment",
-                    "Attendance",
+                    "Quiz-1",
+                    "Quiz-2",
+                    "Mid-Term",
+                    "End-Term",
                     "Total",
                   ]}
                 />
@@ -178,7 +178,7 @@ const InternalResultForm = () => {
                           type="number"
                           required
                           min="0"
-                          max="5"
+                          max="10"
                           disabled={disabled}
                           id={index}
                           name="test"
@@ -192,7 +192,7 @@ const InternalResultForm = () => {
                           type="number"
                           required
                           min="0"
-                          max="5"
+                          max="10"
                           disabled={disabled}
                           id={index}
                           name="seminar"
@@ -206,7 +206,7 @@ const InternalResultForm = () => {
                           type="number"
                           required
                           min="0"
-                          max="5"
+                          max="30"
                           disabled={disabled}
                           id={index}
                           name="assignment"
@@ -220,7 +220,7 @@ const InternalResultForm = () => {
                           type="number"
                           required
                           min="0"
-                          max="5"
+                          max="50"
                           disabled={disabled}
                           id={index}
                           name="attendance"
@@ -234,7 +234,7 @@ const InternalResultForm = () => {
                           type="number"
                           required
                           min="0"
-                          max="5"
+                          max="100"
                           disabled
                           id={index}
                           name="total"

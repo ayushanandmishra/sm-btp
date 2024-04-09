@@ -12,6 +12,7 @@ const StudentForm = () => {
     course: "",
     username: "",
     password: "",
+    rollno:"",
   });
   const [error, setError] = useState("");
 
@@ -25,7 +26,7 @@ const StudentForm = () => {
   const addStudent = async (e) => {
     e.preventDefault();
     try {
-      console.log('testing');
+      console.log(student);
       const reqData = JSON.stringify(student);
       const response = await axios.post("student", reqData);
       navigate("/");
@@ -59,17 +60,52 @@ const StudentForm = () => {
         value={student.email}
         onChange={(e) => handleFormChange(e)}
       />
-      <label className="block" htmlFor="course">
-        Course:
+      <label className="block" htmlFor="name">
+        Roll No:
       </label>
       <input
         className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-slate-200 focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
         type="text"
         required
-        id="course"
-        value={student.course}
+        id="rollno"
+        value={student.rollno}
         onChange={(e) => handleFormChange(e)}
       />
+      <label className="block" htmlFor="course">
+        Course:
+      </label>
+      <select
+        className="mb-4 block h-10 w-full rounded-md border-[1.5px] border-solid border-slate-400 p-1 pl-2 outline-none selection:border-[1.5px] focus:border-violet-900 dark:border-slate-200 dark:caret-inherit dark:focus:border-violet-400 dark:active:border-violet-400"
+        placeholder="select department"
+        name="course"
+        id="course"
+        value={student.course}
+        required
+        onChange={(e) => handleFormChange(e)}
+      >
+        <option defaultValue hidden>
+          Select Course
+        </option>
+
+        <option
+          className="min-h-[2rem] bg-violet-700 font-semibold leading-8 text-slate-100"
+          value="Computer"
+        >
+          Computer
+        </option>
+        <option
+          className="min-h-[2rem] bg-violet-500 font-semibold leading-8 text-slate-100"
+          value="Electronics"
+        >
+          Electronics
+        </option>
+        <option
+          className="min-h-[2rem] bg-violet-700 font-semibold leading-8 text-slate-100"
+          value="Mechanical"
+        >
+          Mechanical
+        </option>
+      </select>
       <label className="block" htmlFor="username">
         Username:
       </label>

@@ -32,7 +32,7 @@ const getAllStudents = asyncHandler(async (req, res) => {
 // @route POST /Student
 // @access Private
 const createNewStudent = asyncHandler(async (req, res) => {
-  const { name, course, email, username, password } = req.body;
+  const { name, course, email, username, password,rollno } = req.body;
 
   // Confirm Data
   if (!name || !email || !course || !username || !password) {
@@ -55,6 +55,7 @@ const createNewStudent = asyncHandler(async (req, res) => {
     email,
     username,
     password: hashedPwd,
+    rollno
   };
 
   // Create and Store New student

@@ -10,6 +10,10 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rollno:{
+    type:String,
+    required:true
+  },
   course: {
     type: String,
     required: true,
