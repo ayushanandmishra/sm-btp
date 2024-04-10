@@ -7,6 +7,7 @@ router
   .route("/student/:studentId/:date")
   .get(attendanceController.getAttendanceStudent);
 
+
 router
   .route("/:paper/:date/:hour")
   .get(attendanceController.getAttendance)

@@ -23,7 +23,12 @@ app.use(cookieParser());
 
 app.use("/", express.static("public"));
 
+
 app.use("/", require("./routes/root"));
+
+app.get("/test", (req, res) => {
+  res.json({ message: "Hello from the test route!" });
+});
 
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/paper", require("./routes/paperRoutes"));
@@ -33,6 +38,7 @@ app.use("/attendance", require("./routes/attendanceRoutes"));
 app.use("/time_schedule", require("./routes/timeScheduleRoutes"));
 app.use("/staff", require("./routes/staffRoutes"));
 app.use("/student", require("./routes/studentRoutes"));
+
 
 app.all("*", (req, res) => {
   res.status(404);

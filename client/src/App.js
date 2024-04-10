@@ -33,6 +33,9 @@ import StudentForm from "./Components/Forms/StudentForm";
 import NotesForm from "./Components/Forms/NotesForm";
 import TimeScheduleForm from "./Components/Forms/TimeScheduleForm";
 import Login from "./Components/Forms/Login";
+import Testing from "./Components/Queries/Testing";
+import Upload from "./Components/openSource/Upload";
+import OpensDash from "./Components/openSource/OpensDash";
 
 // lazy loading user specific components
 const StaffApproval = lazy(() =>
@@ -58,6 +61,7 @@ function App() {
           <Route index element={<Dash />} />
           <Route path="paper" element={<Paper />} />
           <Route path="paper/:paper" element={<Notes />} />
+          <Route path="paper/:paper/notes" element={<OpensDash/>}/>
           <Route path="paper/:paper/add" element={<NotesForm />} />
           <Route path="paper/:paper/:note/edit" element={<NotesForm />} />
           <Route path="paper/:paper/students" element={<StudentsList />} />
@@ -65,6 +69,7 @@ function App() {
           <Route path="internal" element={<InternalLayout />} />
           <Route path="time_schedule" element={<TimeScheduleForm />} />
           <Route path="profile" element={<Profile />} />
+          
           <Route
             path="approve_staff"
             element={

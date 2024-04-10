@@ -6,6 +6,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Loading from "../Layouts/Loading";
 import ErrorStrip from "../ErrorStrip";
+import { AiFillBook } from "react-icons/ai";
 
 const Notes = () => {
   const { paper, notes, setNotes, user } = useContext(UserContext);
@@ -68,7 +69,7 @@ const Notes = () => {
       <hr className="mt-3 border-b-[1px] border-slate-500 " />
 
       <section className="note__body w-full ">
-        {notes?.map((note, index) => (
+        {/* {notes?.map((note, index) => (
           <article
             className="mt-4 overflow-auto whitespace-break-spaces rounded-md  bg-violet-300 hover:bg-violet-400/60 dark:bg-slate-800/70 dark:hover:bg-slate-800 duration-300 dark:text-slate-300"
             key={index}
@@ -99,8 +100,49 @@ const Notes = () => {
               </pre>
             </details>
           </article>
-        ))}
+        ))} */}
         {!notes.length && !error ? <Loading /> : ""}
+
+        <Link to={"notes"}>
+        
+        <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+                <div className="">
+                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                    Notes
+                  </h3>
+                  <hr className="border border-violet-500 dark:border-slate-400" />
+                  <p className="px-2 text-sm font-medium lg:text-base ">
+                    2023
+                  </p>
+                </div>
+              </article>
+              </Link>
+        
+              <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+                <div className="">
+                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                    Question Papers
+                  </h3>
+                  <hr className="border border-violet-500 dark:border-slate-400" />
+                  <p className="px-2 text-sm font-medium lg:text-base ">
+                    2023
+                  </p>
+                </div>
+              </article>
+              <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+                <div className="">
+                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                    Lectures and other Materials
+                  </h3>
+                  <hr className="border border-violet-500 dark:border-slate-400" />
+                  <p className="px-2 text-sm font-medium lg:text-base ">
+                    2023
+                  </p>
+                </div>
+              </article>
       </section>
       {error ? <ErrorStrip error={error} /> : ""}
     </main>
