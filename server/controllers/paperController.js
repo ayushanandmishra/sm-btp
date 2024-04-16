@@ -120,11 +120,13 @@ const getStudentsList = asyncHandler(async (req, res) => {
 
   const students = await Paper.findById(req.params.paperId)
     .select("students")
-    .populate({ path: "students", select: "name" })
+    .populate({ path: "students", select: "name rollno" })
     .exec();
   if (!students?.students.length) {
     return res.status(400).json({ message: "No Students Found" });
   }
+
+  console.log("halleluah "+students);
   res.json(students.students);
 });
 
@@ -141,7 +143,7 @@ const getPaper = asyncHandler(async (req, res) => {
     _id: req.params.paperId,
   })
     .populate({ path: "teacher", select: "name" })
-    .populate({ path: "students", select: "name" })
+    .populate({ path: "students", select: "name rollno" })
     .exec();
   if (!paper) {
     return res.status(404).json({

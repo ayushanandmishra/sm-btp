@@ -101,50 +101,56 @@ const Notes = () => {
             </details>
           </article>
         ))} */}
-        {!notes.length && !error ? <Loading /> : ""}
+        {/* {!notes.length && !error ? <Loading /> : ""} */}
 
         <Link to={"notes"}>
-        
-        <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
-                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
-                <div className="">
-                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
-                    Notes
-                  </h3>
-                  <hr className="border border-violet-500 dark:border-slate-400" />
-                  <p className="px-2 text-sm font-medium lg:text-base ">
-                    2023
-                  </p>
-                </div>
-              </article>
-              </Link>
-        
-              <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
-                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
-                <div className="">
-                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
-                    Question Papers
-                  </h3>
-                  <hr className="border border-violet-500 dark:border-slate-400" />
-                  <p className="px-2 text-sm font-medium lg:text-base ">
-                    2023
-                  </p>
-                </div>
-              </article>
-              <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
-                <AiFillBook className="text-[3rem] lg:text-[4rem]" />
-                <div className="">
-                  <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
-                    Lectures and other Materials
-                  </h3>
-                  <hr className="border border-violet-500 dark:border-slate-400" />
-                  <p className="px-2 text-sm font-medium lg:text-base ">
-                    2023
-                  </p>
-                </div>
-              </article>
+
+          <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+            <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+            <div className="">
+              <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                Notes
+              </h3>
+              <hr className="border border-violet-500 dark:border-slate-400" />
+              <p className="px-2 text-sm font-medium lg:text-base ">
+                2023
+              </p>
+            </div>
+          </article>
+        </Link>
+
+        <Link to={"qp"}>
+          <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+            <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+            <div className="">
+              <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                Question Papers
+              </h3>
+              <hr className="border border-violet-500 dark:border-slate-400" />
+              <p className="px-2 text-sm font-medium lg:text-base ">
+                2023
+              </p>
+            </div>
+          </article>
+        </Link>
+
+        <Link to={"lectures"}>
+          <article className="mb-4 flex items-center whitespace-break-spaces rounded-md  bg-violet-300 p-2 hover:bg-violet-400 duration-200 dark:bg-slate-950/80 dark:hover:bg-slate-950/50 dark:hover:text-slate-300 lg:p-4 ">
+            <AiFillBook className="text-[3rem] lg:text-[4rem]" />
+            <div className="">
+              <h3 className="px-1 text-xl line-clamp-1 font-semibold lg:px-2 lg:text-2xl">
+                Lectures and other Materials
+              </h3>
+              <hr className="border border-violet-500 dark:border-slate-400" />
+              <p className="px-2 text-sm font-medium lg:text-base ">
+                2023
+              </p>
+            </div>
+          </article>
+        </Link>
+
       </section>
-      {error ? <ErrorStrip error={error} /> : ""}
+      {/* {error ? <ErrorStrip error={error} /> : ""} */}
     </main>
   );
 };

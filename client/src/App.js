@@ -62,6 +62,8 @@ function App() {
           <Route path="paper" element={<Paper />} />
           <Route path="paper/:paper" element={<Notes />} />
           <Route path="paper/:paper/notes" element={<OpensDash/>}/>
+          <Route path="paper/:paper/qp" element={<OpensDash/>}/>
+          <Route path="paper/:paper/lectures" element={<OpensDash/>}/>
           <Route path="paper/:paper/add" element={<NotesForm />} />
           <Route path="paper/:paper/:note/edit" element={<NotesForm />} />
           <Route path="paper/:paper/students" element={<StudentsList />} />

@@ -1,1 +1,12 @@
-GET http://localhost:3500/test HTTP/1.1
+POST http://localhost:3500/staff HTTP/1.1
+Content-Type: application/json
+
+  {
+"name":"Manmohan Gupta",
+"email":"adminmech@lnmiit.ac.in",
+"department":"Mechanical",
+"username":"adminmech",
+"password":"adminmech",
+"role":"HOD"
+  }
+

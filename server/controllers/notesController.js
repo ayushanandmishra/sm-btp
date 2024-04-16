@@ -15,7 +15,7 @@ const getNotes = async (req, res) => {
   }).exec();
   if (!notes.length) {
     return res.status(404).json({
-      message: `No Notes found`,
+      message: `END`,
     });
   }
   res.json(notes);

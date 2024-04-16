@@ -5,9 +5,34 @@ import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { TableHeader, RowWithCheckbox } from "../Table";
 import ErrorStrip from "../ErrorStrip";
+import TeacherSubjectComponent from "../Charts/TeacherAttendanceData";
+
+const attendedClasses = [ [60, 62, 55, 54, 43, 61, 46, 38, 57, 50,
+  39, 38, 37, 32, 31, 30, 29 ],
+  [50, 62, 45, 54, 43, 61, 46, 38, 57, 50,
+    39, 38, 37, 52, 61, 50, 49]
+];
+
+const data = [
+  [{ id: 0, value: 81, label: 'Present', color: 'green' },
+  { id: 1, value: 19 , label: 'Absent', color: 'red' }],
+  [{ id: 0, value: 66 , label: 'Present', color: 'green' },
+  { id: 1, value: 34, label: 'Absent', color: 'red' }],
+  [{ id: 0, value: 54, label: 'Present', color: 'green' },
+  { id: 1, value: 46, label: 'Absent', color: 'red' }],
+  [{ id: 0, value: 65, label: 'Present', color: 'green' },
+  { id: 1, value: 35, label: 'Absent', color: 'red' }],
+  [{ id: 0, value: 44, label: 'Present', color: 'green' },
+  { id: 1, value: 56, label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+]
 
 const Attendance = () => {
   const { paperList } = useContext(UserContext);
+  console.log(paperList);
   const [attendance, setAttendance] = useState([]);
   const [paper, setPaper] = useState("");
   const [date, setDate] = useState("");
@@ -37,10 +62,11 @@ const Attendance = () => {
         const response = await axios.get("paper/" + paper);
         // students list is fetched and mapped to add "present" value
         const students = response.data.students;
+       
         students.forEach((student) => {
           Object.assign(student, { present: true });
         });
-        
+        console.log("testing "+JSON.stringify(students));
         setAttendance(students);
         setDisabled(false);
       }
@@ -244,6 +270,11 @@ const Attendance = () => {
             ""
           )}
         </form>
+      </section>
+      <section>
+        {paperList.map(({paper},index)=>{
+          return <TeacherSubjectComponent pieData={data[index]} attendedData={attendedClasses[index]} subject={paper}/>
+        })} 
       </section>
     </main>
   );

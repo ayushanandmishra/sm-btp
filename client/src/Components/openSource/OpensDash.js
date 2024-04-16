@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Loading from "../Layouts/Loading";
 import ErrorStrip from "../ErrorStrip";
 import { AiFillBook } from "react-icons/ai";
+import { AllFiles } from './AllFiles';
 
 function OpensDash() {
 
@@ -41,19 +42,11 @@ function OpensDash() {
         {user.userType === "student" && (
           <li className="p-1">Teacher : {paper.teacher.name}</li>
         )}
-        
-        {user.userType === "staff" && (
-          <li>
-            <Link
-              className="rounded-md px-2 py-1 underline decoration-violet-900   decoration-2 underline-offset-2 hover:bg-violet-950 hover:text-slate-100 hover:decoration-0 dark:decoration-inherit dark:hover:bg-violet-900/80 dark:hover:text-slate-200 md:p-2 "
-              to="add"
-            >
-              Add Note
-            </Link>
-          </li>
-        )}
+      
       </ul>
          <FileUpload/>
+
+         <AllFiles/>
 
     </main>
     

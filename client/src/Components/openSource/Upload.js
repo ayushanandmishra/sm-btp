@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { Box, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
+import { useParams } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 // import Loader2 from '../Loader2';
 // import './Upload.css';
@@ -12,10 +12,11 @@ import Typography from '@mui/material/Typography';
 const FileUpload = ({ onFileUpload }) => {
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [uploadClicked, setUploadClicked] = useState(false);
+  const [reload,setReload]=useState(false);
   const [uploading, setUploading] = useState(false);
   const isNonMobileScreens = useMediaQuery('(min-width:820px)');
-  
-
+  const { paper }=useParams();
+  console.log(paper);
   const getUserData = () => {
     const userStr = localStorage.getItem('userDetails');;
     if (userStr) {
@@ -26,6 +27,7 @@ const FileUpload = ({ onFileUpload }) => {
 
   const [user, setUser] = useState(getUserData());
   console.log(user);
+
   useEffect(() => {
     const storedUser = getUserData();
     setUser(storedUser);
@@ -36,6 +38,19 @@ const FileUpload = ({ onFileUpload }) => {
     setSelectedFiles(files);
   };
 
+  let type;
+  if((window.location.href).includes("notes"))
+  {
+    type="Notes";
+  }
+  else if((window.location.href).includes("qp"))
+  {
+    type="qp";
+  }
+  else 
+  {
+    type="lectures";
+  }
   const submit = async () => {
     setUploading(true);
     const formData = new FormData();
@@ -43,12 +58,13 @@ const FileUpload = ({ onFileUpload }) => {
       formData.append("images", selectedFiles[i]);
     }
     formData.append("id", user._id);
-    formData.append("email", user.email);
-    formData.append("username", `${user.firstName} ${user.lastName}`);
-
+    // formData.append("email", user.email);
+    formData.append("username", `${user.name}`);
+    formData.append("subject",paper);
+    formData.append("type",type);
     // await axios.post("http://localhost:3001/api/posts", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
     try {
-      const response = await fetch(`http://localhost:3001/api/posts`, {
+      const response = await fetch(`http://localhost:3500/api/posts`, {
         method: "POST",
         // headers: {
         //   authorization: `Bearer ${token}`
@@ -61,6 +77,7 @@ const FileUpload = ({ onFileUpload }) => {
       setUploading(false); // Set the uploading state back to false
       setSelectedFiles(null);
       setUploadClicked(false);
+      setReload(!reload);
     }
 
     
@@ -71,7 +88,7 @@ const FileUpload = ({ onFileUpload }) => {
     if (selectedFiles) {
       // You can perform additional actions before uploading, if needed
       setUploadClicked(true);
-      onFileUpload(selectedFiles);
+      
       const res = await submit();
       // Clear the selected files after upload
       setSelectedFiles(null);
@@ -82,6 +99,10 @@ const FileUpload = ({ onFileUpload }) => {
   const handleReject = () => {
     setSelectedFiles(null);
   };
+
+  useEffect(()=>{
+    console.log(selectedFiles);
+  },[selectedFiles,reload]);
 
   // function getAllLocalStorageData() {
   //   const data = {};

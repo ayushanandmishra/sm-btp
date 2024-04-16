@@ -4,9 +4,12 @@ import { TableHeader } from "../Table";
 import axios from "../../config/api/axios";
 import Loading from "../Layouts/Loading";
 import ErrorStrip from "../ErrorStrip";
+import MarksLineChart from "../Charts/StudentComparision";
 
+const studentMarks=[[3,15,3,32],[7,12,8,23]];
+const classAverage=[[5,11,7,28],[7,28,6,28]];
 const InternalStudent = () => {
-  const { user } = React.useContext(UserContext);
+  const { user, paperList } = React.useContext(UserContext);
   const [internal, setInternal] = React.useState([]);
   const [error, setError] = React.useState("");
 
@@ -51,7 +54,7 @@ const InternalStudent = () => {
                       parseInt(paper?.marks.seminar) +
                       parseInt(paper?.marks.assignment) +
                       parseInt(paper?.marks.attendance) >
-                    7
+                      7
                       ? "border-t-[1px] border-violet-500 bg-violet-900/50 first:border-none"
                       : "border-t-[1px] border-violet-500 first:border-none"
                   }
@@ -75,6 +78,11 @@ const InternalStudent = () => {
       ) : (
         <Loading />
       )}
+      <section>
+        {paperList.map(({ paper }, index) => {
+          return <MarksLineChart classAverage={classAverage[index]} studentMarks={studentMarks[index]} subject={paper} />;
+        })}
+      </section>
     </main>
   );
 };

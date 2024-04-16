@@ -21,6 +21,8 @@ const TableHeader = ({
 };
 
 const RowWithCheckbox = ({ keys, disabled, value, handleFormChange }) => {
+
+  console.log(value);
   return (
     <tr
       key={keys}
@@ -46,7 +48,7 @@ const RowWithCheckbox = ({ keys, disabled, value, handleFormChange }) => {
         {value.student?.name || value?.name}
       </td>
       <td className=" px-4 py-2 text-center text-lg font-medium">
-        {value.student?.rollno || value?.name}
+        {value.student?.rollno || value?.rollno}
       </td>
     </tr>
   );

@@ -3,13 +3,34 @@ import axios from "../../config/api/axios";
 import UserContext from "../../Hooks/UserContext";
 import { TableHeader } from "../Table";
 import ErrorStrip from "../ErrorStrip";
+import AttendancePieChart from "../Charts/PieCharts2.js"
+
+const data = [
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(12 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+  [{ id: 0, value: Math.floor(15 * Math.random()), label: 'Present', color: 'green' },
+  { id: 1, value: Math.floor(8 * Math.random()), label: 'Absent', color: 'red' }],
+]
+
 
 const AttendanceStudent = () => {
   const { user } = useContext(UserContext);
   const [attendance, setAttendance] = useState([]);
   const [date, setDate] = useState("");
   const [error, setError] = useState("");
+  const { setPaper, paperList } = useContext(UserContext);
 
+  console.log(paperList);
   // fetching Attendance
   const fetchAttendance = async (e) => {
     e.preventDefault();
@@ -91,6 +112,26 @@ const AttendanceStudent = () => {
           )}
         </form>
       </section>
+      {/* <section>
+            <PieActiveArc/>
+      </section> */}
+      {/* <section style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <AttendancePieChart subject={"Data Structures"} />
+        <AttendancePieChart subject={"Computer Networks"} />
+      </section>
+
+      <section style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <AttendancePieChart subject={"Data Structures"} />
+        <AttendancePieChart subject={"Computer Networks"} />
+      </section> */}
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {paperList.map(({ paper }, index) => {
+          return (
+            <AttendancePieChart key={paper} subject={paper} data={data[index]} />
+          );
+        })}
+      </div>
+
     </main>
   );
 };

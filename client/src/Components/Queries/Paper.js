@@ -31,7 +31,7 @@ const Paper = () => {
           ))}
         </section>
       ) : (
-        <p className="text-lg">No Subjects Found.</p>
+        <p className="text-lg"></p>
       )}
     </main>
   );
