@@ -1,4 +1,4 @@
-const { v4: uuid } = require("uuid");
+const { v4: uuid } = require("uuid");  //to create unique ids
 const fs = require("fs");
 const fsPromises = require("fs").promises;
 const path = require("path");

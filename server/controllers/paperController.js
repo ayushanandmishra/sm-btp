@@ -1,6 +1,6 @@
 const { mongoose } = require("mongoose");
 const Paper = require("./../models/Paper");
-const asyncHandler = require("express-async-handler");
+const asyncHandler = require("express-async-handler");//Simple middleware for handling exceptions inside of async express routes and passing them to your express error handlers.
 
 // @desc Get Papers for each Staff
 // @route GET /Paper/staff/staffId
@@ -76,7 +76,7 @@ const getAllPapers = asyncHandler(async (req, res) => {
 
   const papers = await Paper.aggregate([
     {
-      $lookup: {
+      $lookup: {             //join equivalent in mongodb
         from: "staffs",
         localField: "teacher",
         foreignField: "_id",
@@ -84,7 +84,7 @@ const getAllPapers = asyncHandler(async (req, res) => {
       },
     },
     {
-      $unwind: "$teacher",
+      $unwind: "$teacher",  //if teacher has multiple teachers then it will deconstructs each
     },
     {
       $project: {
@@ -144,7 +144,7 @@ const getPaper = asyncHandler(async (req, res) => {
   })
     .populate({ path: "teacher", select: "name" })
     .populate({ path: "students", select: "name rollno" })
-    .exec();
+    .exec();  //gives you more error control
   if (!paper) {
     return res.status(404).json({
       message: `No Paper(s) found`,
@@ -173,8 +173,8 @@ const addPaper = asyncHandler(async (req, res) => {
     students: req.body.students,
     teacher: req.body.teacher,
   })
-    .lean()
-    .exec();
+    .lean()   //  when you want a lightweight, plain JavaScript object instead of a full Mongoose document.
+    .exec();  //Use .exec() to explicitly execute a query, which is particularly useful when working with complex query chains or when you want more control over error handling and promise chaining.
 
   if (duplicate) {
     return res.status(409).json({ message: "Paper already exists" });
